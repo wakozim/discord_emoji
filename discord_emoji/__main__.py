@@ -45,7 +45,7 @@ def parse_args() -> Tuple[argparse.ArgumentParser, argparse.Namespace]:
     parser.add_argument(
         '-b', '--bot',
         help='using bot token',
-        type=bool
+        action='store_true',
     )
 
     group = parser.add_mutually_exclusive_group()
@@ -100,8 +100,6 @@ async def download_discord_image(image_filename: str, image_url: str):
 async def main(args: List[str]) -> int:
     args = args[1:]
     parser, args = parse_args()
-    print(args)
-    exit()
 
     discord: DiscordAPI = DiscordAPI(TOKEN, bot=args.bot)
 
